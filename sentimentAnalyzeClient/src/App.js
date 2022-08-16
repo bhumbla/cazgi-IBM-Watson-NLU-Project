@@ -49,9 +49,9 @@ class App extends React.Component {
         let output = data.label;
         let color = "white"
         switch(output) {
-          case "positive": color = "black";break;
-          case "negative": color = "black";break;
-          default: color = "black";
+          case "positive": color = "green";break;
+          case "negative": color = "red";break;
+          default: color = "yellow";
         }
         output = <div style={{color:color,fontSize:20}}>{output}</div>
         this.setState({sentimentOutput:output});
@@ -67,6 +67,7 @@ class App extends React.Component {
 
     fetch(url).then((response)=>{
       response.json().then((data)=>{
+          console.log(data);
       this.setState({sentimentOutput:<EmotionTable emotions={data}/>});
   })})  ;
   }
